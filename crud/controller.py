@@ -37,12 +37,11 @@ def userProfileUpdate(payload):
     obj = RegistrationModel.get_user(payload.username)
     if not obj:
         return HTTPException(status_code=404, detail="User Not Found")
-
     RegistrationModel.update_user(obj.id, **payload.dict(exclude_unset=True))
     return {"status": " successfully updated"}
 
 
 def userProfiledelete(payload):
     obj = RegistrationModel.get_user(payload)
-    data = RegistrationModel.delete_user(obj.id)
+    RegistrationModel.delete_user(obj.id)
     return {"status": "success"}
