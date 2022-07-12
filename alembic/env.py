@@ -22,15 +22,17 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
 
+
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
 def include_object(object, name, type_, reflected, compare_to):
-    if type_ =="table" and object.schema != "application":
+    if type_ == "table" and object.schema != "application":
         return False
     return True
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -70,10 +72,10 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        connection.execute(f"CREATE SCHEMA IF NOT EXISTS application")
+        connection.execute("CREATE SCHEMA IF NOT EXISTS application")
         context.configure(
             connection=connection, target_metadata=target_metadata,
-            version_table_schema = "application",
+            version_table_schema="application",
             include_object=include_object,
             include_schemas=True
         )

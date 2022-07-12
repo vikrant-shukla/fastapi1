@@ -22,3 +22,16 @@ class RegistrationModel:
     def get_user(cls, payload):
         obj = db.query(CrudSchema).filter(CrudSchema.username == payload).first()
         return obj
+
+    @classmethod
+    def update_user(cls, id, **kw):
+        obj = db.query(CrudSchema).filter(CrudSchema.id == id)
+        for key, value in kw.items():
+            obj.update({key: value})
+        db.commit()
+
+    @classmethod
+    def delete_user(cls, id):
+        obj = db.query(CrudSchema).filter(CrudSchema.id == id)
+        obj.delete()
+        db.commit()

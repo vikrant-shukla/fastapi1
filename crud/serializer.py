@@ -20,3 +20,20 @@ class InBoundUser(BaseModel):
 class PayloadInbound(BaseModel):
     username: str
     password: str
+
+
+class OutBoundSerializer(BaseModel):
+    username: str
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    dob: Optional[str] = None
+    mobileNumber: Optional[int] = None
+
+
+class OutBoundUpdate(BaseModel):
+    username: str
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    password: Optional[str] = None
+    dob: Optional[str] = None
+    mobileNumber: Optional[int] = None

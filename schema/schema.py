@@ -2,7 +2,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, VARCHAR, INTEGER, TEXT
 
 Base = declarative_base()
-metadata = Base.metadata
 
 
 class CrudSchema(Base):
@@ -15,4 +14,4 @@ class CrudSchema(Base):
     lastname = Column(VARCHAR(50), nullable=True)
     password = Column(TEXT)
     dob = Column(TEXT)
-    mobileNumber = Column(INTEGER, default=1111111111)
+    mobileNumber = Column(VARCHAR(10), default=0)
